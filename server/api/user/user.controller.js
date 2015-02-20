@@ -30,10 +30,11 @@ exports.create = function (req, res, next) {
   var newUser = new User(req.body);
   newUser.provider = 'local';
   newUser.role = 'user';
+
   newUser.save(function(err, user) {
     if (err) return validationError(res, err);
 
-    Spark.createUser(req.body.email,req.body.password, function(err, data) {
+    Spark.createUser(req.body.email,req.body.password,0, function(err, data) {
       //console.log('API call login completed on callback:', body);
       if (!err) {
          var token = jwt.sign({_id: user._id }, config.secrets.session, { expiresInMinutes: 60*5 });
@@ -56,6 +57,27 @@ exports.create = function (req, res, next) {
    
   });
 };
+
+
+
+exports.createFrontend = function (req, res, next) {
+
+  console.log("comming");
+  var newUser = new User(req.body);
+  newUser.provider = 'local';
+  newUser.role = 'user';
+
+  newUser.save(function(err, user) {
+    if (err) return validationError(res, err);
+
+      var token = jwt.sign({_id: user._id }, config.secrets.session, { expiresInMinutes: 60*5 });
+          res.json({ token: token });
+  });
+};
+
+
+
+
 
 /**
  * Get a single user
