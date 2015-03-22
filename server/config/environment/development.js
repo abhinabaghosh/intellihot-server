@@ -5,7 +5,7 @@
 module.exports = {
   // MongoDB connection options
   mongo: {
-    uri: 'mongodb://localhost/genericappapparbor-dev'
+    uri: 'mongodb://localhost/intellihot-server-dev'
   },
 
   seedDB: true

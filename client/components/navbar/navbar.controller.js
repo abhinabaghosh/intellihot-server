@@ -3,9 +3,24 @@
 angular.module('genericAppApparborApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
     $scope.menu = [{
-      'title': 'Home',
-      'link': '/'
-    }];
+                      'title': 'Home',
+                      'link': '/'
+                    },
+                    {
+                      'title': 'View Devices',
+                      'link': '/viewDevices'
+                    },
+                    {
+                      'title': 'View All Event',
+                      'link': '/viewEvents'
+                    },
+                    {
+                      'title': 'Edit Device',
+                      'link': '/editDevices'
+                    }
+
+
+    ];
 
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;

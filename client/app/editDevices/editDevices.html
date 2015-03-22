@@ -1,0 +1,152 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+
+      <div class="col-lg-7">
+
+      	<div class="table-bordered  bottom-gap col-lg-12 padding-top-1">
+      		<div  ng-show="!editMode" class="table-responsive">
+      			<button class="btn btn-primary btn btn-success" type="button" ng-click="addDevice()">Add New Device</button>
+      			<table  class="table">
+				<caption><h2 class="">My device</h2></caption>
+				  <thead>
+				    <tr>
+				      <th>Heater ID</th>
+				      <th>Heater Location</th>
+				      <th>&nbsp;</th>
+				      <th>&nbsp;</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <td>1234</td>
+				      <td>123 Park Ave NY 51201</td>
+				      <td><button class="btn  btn-small btn-primary btn btn-danger" type="button">Remove</button></td>
+				      <td><button class="btn  btn-small btn-primary btn btn-primary" type="button">Edit</button></td>
+				    </tr>
+				    <tr>
+				      <td>12345</td>
+				      <td>D 14/1 brahmapur place</td>
+				      <td><button class="btn  btn-small btn-primary btn btn-danger" type="button">Remove</button></td>
+				      <td><button class="btn  btn-small btn-primary btn btn-primary" type="button">Edit</button></td>
+				    </tr>
+				  </tbody>
+				</table>
+      		</div>
+
+      		<div  ng-show="editMode">
+      			
+						<form class="form-horizontal" role="form">
+						  <div class="form-group">
+						    <label class="control-label col-sm-4" for="heaterId">Heater ID:</label>
+						    <div class="col-sm-8">
+						      <input type="text" class="form-control" id="heaterId" placeholder="Enter Heater ID">
+						    </div>
+						  </div>
+
+						  <div class="form-group">
+						    <label class="control-label col-sm-4" for="heaterLocation">Heater Location:</label>
+						    <div class="col-sm-8"> 
+						      <input type="text" class="form-control" id="heaterLocation" placeholder="Enter Heater Lcoation">
+						    </div>
+						  </div>
+
+						  <!--
+						   <div class="form-group">
+						    <label class="control-label col-sm-3" for="serviceContractor">Account Type</label>
+						    <div class="col-sm-5"></div>
+						    <div class="col-sm-2"><b>Alert</b></div>
+						    <div class="col-sm-2"><b>Error</b></div>
+						  </div>
+						  -->
+
+
+
+						  <div class="form-group">
+						    <label class="control-label col-sm-4" for="serviceContractor">Service Contractor:</label>
+						    <div class="col-sm-4"> 
+						      <input type="email" class="form-control" id="serviceContractor" placeholder="Enter Service Contractor Email">
+						    </div>
+						     <div class="col-sm-2">
+							     <div class="checkbox">
+							     	<label><input type="checkbox"> Alert</label>
+							     </div>
+						     </div>
+						     <div class="col-sm-2">
+							     <div class="checkbox">
+							     	<label><input type="checkbox"> Error</label>
+							     </div>
+						     </div>
+						  </div>
+
+
+						  <div class="form-group">
+						    <label class="control-label col-sm-4" for="maintenace">Maintenace:</label>
+						    <div class="col-sm-4"> 
+						      <input type="email" class="form-control" id="maintenace" placeholder="Enter Maintenace Email">
+						    </div>
+						     <div class="col-sm-2">
+							     <div class="checkbox">
+							     	<label><input type="checkbox"> Alert</label>
+							     </div>
+						     </div>
+						     <div class="col-sm-2">
+							     <div class="checkbox">
+							     	<label><input type="checkbox"> Error</label>
+							     </div>
+						     </div>
+						  </div>
+
+						  
+						  <div class="form-group"> 
+						    <div class="col-sm-offset-4 col-sm-3">
+						      <button type="submit" class="btn btn-default btn btn-success">Save</button>
+						    </div>
+						    <div class="col-sm-5">
+						      <button type="btn" class="btn btn-warning" ng-click="cancelAddDevice()">Cancel</button>
+						    </div>
+						  </div>
+						</form>
+
+      		</div>
+
+
+
+
+      	</div>
+
+
+
+
+
+
+      </div>
+
+      <div class="col-lg-5 " >
+      		<div class="col-lg-12 bottom-gap">
+      			<div class="table-bordered bottom-gap" ng-include="'components/show-data/all-device-alert.html'"></div>
+      		</div>
+      		<div class="col-lg-12 bottom-gap">
+      			<div class="table-bordered bottom-gap" ng-include="'components/show-data/all-device-error-message.html'"></div>
+      		</div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+<div ng-include="'components/footer/footer.html'"></div>

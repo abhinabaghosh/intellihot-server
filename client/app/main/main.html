@@ -1,17 +1,32 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
+<!--
 <header class="hero-unit" id="banner">
   <div class="container">
     <h1>Hello!</h1>
     <p class="lead">MyIntellihot site is in development phase</p>
   </div>
 </header>
+-->
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+
+      <div class="col-lg-5  container bottom-gap">
+      	   <div class="table-bordered" ng-include="'components/show-data/all-device-alert.html'"></div>
+      </div>
 
 
+    	<div class="col-lg-7   container bottom-gap">
+            <div  class="table-bordered" ng-include="'components/show-data/all-device-error-message.html'"></div>
+    	</div>
 
-<footer class="footer">
-  <div class="container">
-      <p>MyIntellihot |
-      <a href="http://www.intellihot.com/">intellihot</a>
+    </div>
   </div>
-</footer>
+</div>
+
+
+
+
+<div ng-include="'components/footer/footer.html'"></div>

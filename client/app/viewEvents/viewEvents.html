@@ -1,0 +1,66 @@
+
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+
+      <div class="col-lg-7">
+      	<div class="table-bordered  bottom-gap">
+
+				<table  class="table">
+				<caption><h2 class="">My device</h2></caption>
+					
+				  <thead>
+				    <tr>
+				      <th>Heater ID</th>
+				      <th>Event Name</th>
+				      <th>Time</th>
+				      <th>Date</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <td>1234</td>
+				      <td>Air Filter change</td>
+				      <td>9:30 am</td>
+				      <td>31/3/2015</td>
+				    </tr>
+				    <tr>
+				      <td>12345</td>
+				      <td>Coil Change </td>
+				      <td>12:30 pm</td>
+				      <td>31/3/2015</td>
+				    </tr>
+				  </tbody>
+				</table> 		
+      	</div>
+
+      </div>
+
+      <div class="col-lg-5 " >
+      		<div class="col-lg-12 bottom-gap">
+      			<div class="table-bordered bottom-gap" ng-include="'components/show-data/all-device-alert.html'"></div>
+      		</div>
+      		<div class="col-lg-12 bottom-gap">
+      			<div class="table-bordered bottom-gap" ng-include="'components/show-data/all-device-error-message.html'"></div>
+      		</div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+<div ng-include="'components/footer/footer.html'"></div>
