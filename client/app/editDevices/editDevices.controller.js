@@ -8,12 +8,12 @@ angular.module('genericAppApparborApp')
   	 $scope.addDevice = function() {
   	 	$scope.editMode = true;
   	 	//alert("clicked");
-  	 }
+  	 };
 
   	 $scope.cancelAddDevice = function() {
   	 	$scope.editMode = false;
   	 	//alert("clicked");
-  	 }
+  	 };
 
 
 

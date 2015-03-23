@@ -8,7 +8,7 @@
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
 
-var Device = require('../api/devices/devices.model');
+var Device = require('../api/device/device.model');
 
 
 
