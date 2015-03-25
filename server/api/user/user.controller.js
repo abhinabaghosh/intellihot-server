@@ -4,7 +4,7 @@ var User = require('./user.model');
 var passport = require('passport');
 var config = require('../../config/environment');
 var jwt = require('jsonwebtoken');
-var Spark = require('../../custom_node_modules/spark');
+//var Spark = require('../../custom_node_modules/spark');
 
 
 
@@ -33,7 +33,7 @@ exports.create = function (req, res, next) {
 
   newUser.save(function(err, user) {
     if (err) return validationError(res, err);
-
+    /*
     Spark.createUser(req.body.email,req.body.password,0, function(err, data) {
       //console.log('API call login completed on callback:', body);
       if (!err) {
@@ -46,14 +46,14 @@ exports.create = function (req, res, next) {
             User.findByIdAndRemove(user._id , function(err, user) {
               //if(err) res.json({ token: err });
             });
-            /**/
+           
             var token = jwt.sign({_id: user._id }, config.secrets.session, { expiresInMinutes: 60*5 });
             res.json({ token: token });
       }
-        /**/
+        
 
     });
-
+      */
    
   });
 };
@@ -117,7 +117,7 @@ exports.changePassword = function(req, res, next) {
       user.save(function(err) {
         if (err) return validationError(res, err);
 
-
+          /*
           Spark.createUser(user.email, newPass, function(err, data) {
           //console.log('API call login completed on callback:', body);
             if (!err) {
@@ -131,6 +131,7 @@ exports.changePassword = function(req, res, next) {
               });
             }
           });
+          */
 
       });
     } else {
