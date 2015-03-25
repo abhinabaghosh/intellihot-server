@@ -58,7 +58,7 @@ Thing.find({}).remove(function() {
 
 
 
-/*
+/**/
 User.find({}).remove(function() {
   User.create({
     provider: 'local',
@@ -76,7 +76,7 @@ User.find({}).remove(function() {
     }
   );
 });
-*/
+
 
 
 
