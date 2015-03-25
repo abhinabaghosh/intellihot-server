@@ -3,7 +3,7 @@
 angular.module('genericAppApparborApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
     $scope.menu = [{
-                      'title': 'Home',
+                      'title': 'Dashboard',
                       'link': '/'
                     },
                     {
