@@ -18,6 +18,9 @@ function onConnect(socket) {
   });
 
   // Insert sockets below
+  require('../api/event/event.socket').register(socket);
+  require('../api/deviceError/deviceError.socket').register(socket);
+  require('../api/deviceAlert/deviceAlert.socket').register(socket);
   require('../api/device/device.socket').register(socket);
   require('../api/language/language.socket').register(socket);
   require('../api/thing/thing.socket').register(socket);

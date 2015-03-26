@@ -9,6 +9,28 @@ var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
 
 var Device = require('../api/device/device.model');
+var DeviceAlert = require('../api/deviceAlert/deviceAlert.model');
+var DeviceError = require('../api/deviceError/deviceError.model');
+var Event = require('../api/event/event.model');
+
+
+
+
+Event.find({}).remove(function() {
+  Event.create({
+    deviceId: "1234",
+    name: "Ignition Fault",
+    userId: "1234",
+    time: "9:15 AM ",
+    date: "12/04/15",
+    active: true
+  }, function() {
+      console.log('finished populating Event');
+    }
+  );
+});
+
+
 
 
 
@@ -18,6 +40,16 @@ Device.find({}).remove(function() {
     name: "Murali's Device",
     userId: "1",
     location: "123 Park Ave NY 51201",
+    serviceContractor:{
+              email:"serviceContractor@intellihot.com",
+              alert:false,
+              error:true,
+              },
+    maintenance:{
+              email:"maintenance@intellihot.com",
+              alert:true,
+              error:true,
+              },          
     info: "no info for now",
     active: true
   }, {
@@ -25,13 +57,76 @@ Device.find({}).remove(function() {
     name: "Abhi's Device",
     userId: "2",
     location: "D 14/1 brahmapur place",
+    serviceContractor:{
+              email:"serviceContractor1@intellihot.com",
+              alert:false,
+              error:true,
+              },
+    maintenance:{
+              email:"maintenance1@intellihot.com",
+              alert:false,
+              error:false,
+              },
     info: "no info for now",
     active: true
   }, function() {
-      console.log('finished populating users');
+      console.log('finished populating Device');
     }
   );
 });
+
+
+
+
+DeviceAlert.find({}).remove(function() {
+  DeviceAlert.create({
+      deviceId: "1234",
+      userId: "1234",
+      event: "Air Filter change",
+      date: "31/3/2015",
+      active: true
+  }, {
+      deviceId: "12345",
+      userId: "12345",
+      event: "coil change",
+      date: "31/5/2015",
+      active: true
+  }, function() {
+      console.log('finished populating DeviceAlert');
+    }
+  );
+});
+
+
+
+DeviceError.find({}).remove(function() {
+  DeviceError.create({
+      deviceId: "1234",
+      userId: "1234",
+      error: "Air Filter Error",
+      date: "31/3/2015",
+      active: true
+  }, {
+      deviceId: "12345",
+      userId: "12345",
+      error: "coil Error",
+      date: "31/5/2015",
+      active: true
+  }, function() {
+      console.log('finished populating DeviceError');
+    }
+  );
+});
+
+
+
+
+
+/**/
+
+
+
+
 
 
 Thing.find({}).remove(function() {

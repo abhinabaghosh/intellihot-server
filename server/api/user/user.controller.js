@@ -5,6 +5,7 @@ var passport = require('passport');
 var config = require('../../config/environment');
 var jwt = require('jsonwebtoken');
 //var Spark = require('../../custom_node_modules/spark');
+var Spark = require('intellihot-spark-js');
 
 
 
@@ -33,7 +34,7 @@ exports.create = function (req, res, next) {
 
   newUser.save(function(err, user) {
     if (err) return validationError(res, err);
-    /*
+    
     Spark.createUser(req.body.email,req.body.password,0, function(err, data) {
       //console.log('API call login completed on callback:', body);
       if (!err) {
@@ -53,7 +54,7 @@ exports.create = function (req, res, next) {
         
 
     });
-      */
+      /**/
    
   });
 };
@@ -117,7 +118,7 @@ exports.changePassword = function(req, res, next) {
       user.save(function(err) {
         if (err) return validationError(res, err);
 
-          /*
+         
           Spark.createUser(user.email, newPass, function(err, data) {
           //console.log('API call login completed on callback:', body);
             if (!err) {
@@ -131,7 +132,7 @@ exports.changePassword = function(req, res, next) {
               });
             }
           });
-          */
+          /* */
 
       });
     } else {

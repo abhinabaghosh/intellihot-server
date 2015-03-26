@@ -10,7 +10,7 @@
 
       	<div class="table-bordered  bottom-gap col-lg-12 padding-top-1">
       		<div  ng-show="!editMode" class="table-responsive">
-      			<button class="btn btn-primary btn btn-success" type="button" ng-click="addDevice()">Add New Device</button>
+      			<!--<button class="btn btn-primary btn btn-success" type="button" ng-click="addDevice()">Add New Device</button>-->
       			<table  class="table">
 				<caption><h2 class="">My device</h2></caption>
 				  <thead>
@@ -22,17 +22,11 @@
 				    </tr>
 				  </thead>
 				  <tbody>
-				    <tr>
-				      <td>1234</td>
-				      <td>123 Park Ave NY 51201</td>
-				      <td><button class="btn  btn-small btn-primary btn btn-danger" type="button">Remove</button></td>
-				      <td><button class="btn  btn-small btn-primary btn btn-primary" type="button">Edit</button></td>
-				    </tr>
-				    <tr>
-				      <td>12345</td>
-				      <td>D 14/1 brahmapur place</td>
-				      <td><button class="btn  btn-small btn-primary btn btn-danger" type="button">Remove</button></td>
-				      <td><button class="btn  btn-small btn-primary btn btn-primary" type="button">Edit</button></td>
+				    <tr ng-repeat="device in myDevices" >
+				      <td>{{device.deviceId}}</td>
+				      <td>{{device.location}}</td>
+				      <td><button class="btn  btn-small btn-primary btn btn-danger"  type="button">Remove</button></td>
+				      <td><button ng-click="editDevice(device._id)" class="btn  btn-small btn-primary btn btn-primary" type="button" >Edit</button></td>
 				    </tr>
 				  </tbody>
 				</table>
@@ -40,45 +34,36 @@
 
       		<div  ng-show="editMode">
       			
-						<form class="form-horizontal" role="form">
+						<form class="form-horizontal" role="form" ng-submit="updateDevice()">
 						  <div class="form-group">
 						    <label class="control-label col-sm-4" for="heaterId">Heater ID:</label>
 						    <div class="col-sm-8">
-						      <input type="text" class="form-control" id="heaterId" placeholder="Enter Heater ID">
+						      <input type="text" value="{{deviceDetails.deviceId}}" ng-readonly="true" class="form-control" id="heaterId"   >
 						    </div>
 						  </div>
 
 						  <div class="form-group">
 						    <label class="control-label col-sm-4" for="heaterLocation">Heater Location:</label>
 						    <div class="col-sm-8"> 
-						      <input type="text" class="form-control" id="heaterLocation" placeholder="Enter Heater Lcoation">
+						      <input type="text" ng-model="deviceDetails.location" class="form-control" id="heaterLocation" placeholder="Enter Heater Lcoation">
 						    </div>
 						  </div>
 
-						  <!--
-						   <div class="form-group">
-						    <label class="control-label col-sm-3" for="serviceContractor">Account Type</label>
-						    <div class="col-sm-5"></div>
-						    <div class="col-sm-2"><b>Alert</b></div>
-						    <div class="col-sm-2"><b>Error</b></div>
-						  </div>
-						  -->
-
-
+					
 
 						  <div class="form-group">
 						    <label class="control-label col-sm-4" for="serviceContractor">Service Contractor:</label>
 						    <div class="col-sm-4"> 
-						      <input type="email" class="form-control" id="serviceContractor" placeholder="Enter Service Contractor Email">
+						      <input type="email" ng-model="deviceDetails.serviceContractor.email" class="form-control" id="serviceContractor" placeholder="Enter Service Contractor Email">
 						    </div>
 						     <div class="col-sm-2">
 							     <div class="checkbox">
-							     	<label><input type="checkbox"> Alert</label>
+							     	<label><input type="checkbox" ng-model="deviceDetails.serviceContractor.alert"> Alert</label>
 							     </div>
 						     </div>
 						     <div class="col-sm-2">
 							     <div class="checkbox">
-							     	<label><input type="checkbox"> Error</label>
+							     	<label><input type="checkbox" ng-model="deviceDetails.serviceContractor.error" > Error</label>
 							     </div>
 						     </div>
 						  </div>
@@ -87,16 +72,16 @@
 						  <div class="form-group">
 						    <label class="control-label col-sm-4" for="maintenace">Maintenace:</label>
 						    <div class="col-sm-4"> 
-						      <input type="email" class="form-control" id="maintenace" placeholder="Enter Maintenace Email">
+						      <input type="email"  ng-model="deviceDetails.maintenance.email" class="form-control" id="maintenace" placeholder="Enter Maintenace Email">
 						    </div>
 						     <div class="col-sm-2">
 							     <div class="checkbox">
-							     	<label><input type="checkbox"> Alert</label>
+							     	<label><input type="checkbox" ng-model="deviceDetails.maintenance.alert" > Alert</label>
 							     </div>
 						     </div>
 						     <div class="col-sm-2">
 							     <div class="checkbox">
-							     	<label><input type="checkbox"> Error</label>
+							     	<label><input type="checkbox" ng-model="deviceDetails.maintenance.error" > Error</label>
 							     </div>
 						     </div>
 						  </div>
@@ -104,7 +89,7 @@
 						  
 						  <div class="form-group"> 
 						    <div class="col-sm-offset-4 col-sm-3">
-						      <button type="submit" class="btn btn-default btn btn-success">Save</button>
+						      <button type="submit"  class="btn btn-default btn btn-success">Update</button>
 						    </div>
 						    <div class="col-sm-5">
 						      <button type="btn" class="btn btn-warning" ng-click="cancelAddDevice()">Cancel</button>

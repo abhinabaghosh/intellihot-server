@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('genericAppApparborApp')
-  .controller('ViewDevicesCtrl', function ($scope,$http, socket) {
+  .controller('ViewDevicesCtrl', function ($scope,$http, Auth,socket) {
     $scope.message = 'Hello';
 
     $http.get('/api/devices').success(function(myDevices) {

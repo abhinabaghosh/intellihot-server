@@ -22,17 +22,11 @@
 				    </tr>
 				  </thead>
 				  <tbody>
-				    <tr>
-				      <td>1234</td>
-				      <td>Air Filter change</td>
-				      <td>9:30 am</td>
-				      <td>31/3/2015</td>
-				    </tr>
-				    <tr>
-				      <td>12345</td>
-				      <td>Coil Change </td>
-				      <td>12:30 pm</td>
-				      <td>31/3/2015</td>
+				    <tr ng-repeat="event in events" >
+				      <td>{{event.deviceId}}</td>
+				      <td>{{event.name}}</td>
+				      <td>{{event.date}}</td>
+				      <td>{{event.time}}</td>
 				    </tr>
 				  </tbody>
 				</table> 		

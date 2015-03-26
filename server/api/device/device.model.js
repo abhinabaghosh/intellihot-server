@@ -8,6 +8,16 @@ var DeviceSchema = new Schema({
   name: String,
   userId: String,
   location: String,
+  serviceContractor:{
+  						email:String,
+  						alert:Boolean,
+  						error:Boolean
+  						},
+  maintenance:{
+				email:String,
+				alert:Boolean,
+				error:Boolean
+				}, 						
   info: String,
   active: Boolean
 });

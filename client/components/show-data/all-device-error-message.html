@@ -1,4 +1,4 @@
-		
+<div ng-controller="DeviceErrorCtrl">		
 <table  class="table ">
   <caption><h2 class="">Error Messages from all device</h2></caption>
   <thead>
@@ -9,6 +9,13 @@
     </tr>
   </thead>
   <tbody>
+
+    <tr ng-repeat="error in deviceErrors">
+      <td>{{error.deviceId}}</td>
+      <td>{{error.error}}</td>
+      <td>{{error.date}}</td>
+    </tr>
+  <!--
     <tr>
       <td>1234</td>
       <td>Air Filter Error  </td>
@@ -19,8 +26,10 @@
       <td>Coil Error </td>
       <td>31/3/2015</td>
     </tr>
+    -->
   </tbody>
 </table>
+</div>
 
 
 

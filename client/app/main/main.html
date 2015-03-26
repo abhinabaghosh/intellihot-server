@@ -11,7 +11,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-12">
+    <div ng-show="isLoggedIn()" class="col-lg-12">
 
       <div class="col-lg-5  container bottom-gap">
       	   <div class="table-bordered" ng-include="'components/show-data/all-device-alert.html'"></div>
@@ -23,6 +23,28 @@
     	</div>
 
     </div>
+
+    <div ng-hide="isLoggedIn()" class="col-lg-12 table-bordered text-center text-primary">
+
+              Scrolling images of intellihot product which links to intellihot website
+              e.g. industrial commercial residential
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              This page will show if user is not logged in
+
+
+    </div>
+
   </div>
 </div>
 
