@@ -8,5 +8,5 @@ module.exports = {
     uri: 'mongodb://localhost/intellihot-server-dev'
   },
 
-  seedDB: true
+  seedDB: false
 };
