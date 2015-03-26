@@ -11,11 +11,11 @@ angular.module('genericAppApparborApp')
                       'link': '/viewDevices'
                     },
                     {
-                      'title': 'View All Event',
+                      'title': 'View All Events',
                       'link': '/viewEvents'
                     },
                     {
-                      'title': 'Edit Device',
+                      'title': 'Edit Devices',
                       'link': '/editDevices'
                     }
 
