@@ -2,14 +2,27 @@
 
 var _ = require('lodash');
 var Device = require('./device.model');
+var User = require('../user/user.model');
+var mongoose = require('mongoose');
+//var auth = require('../../auth/auth.service');
+
 
 // Get list of devices
+exports.showUserDevices = function(req, res) {
+  Device.find({ 'userId':req.params.id}, function (err, devices) {
+    if(err) { return handleError(res, err); }
+    return res.json(200, devices);
+  });
+};
+
 exports.index = function(req, res) {
   Device.find(function (err, devices) {
     if(err) { return handleError(res, err); }
     return res.json(200, devices);
   });
 };
+
+
 
 // Get a single device
 exports.show = function(req, res) {
@@ -20,12 +33,77 @@ exports.show = function(req, res) {
   });
 };
 
+
+exports.test = function(req, res) {
+  User.find({ 'email': "test@test.com"}, function (err, User) {
+    if(err) { return handleError(res, err); }
+    if(!User) { return res.send(404); }
+    return res.json(User);
+  });
+};
+
+exports.test1 = function(req, res) {
+  User.find( function (err, User) {
+    if(err) { return handleError(res, err); }
+    if(!User) { return res.send(404); }
+    return res.json(User);
+  });
+};
+
+
+
+
 // Creates a new device in the DB.
 exports.create = function(req, res) {
+   
+  var adddevice=req.body;
+
+    User.findOne({ 'email': req.body.userEmail }, function (err, docs) {
+      adddevice.userId=docs._id;
+      //console.log("name-->"+docs.name);
+      //adddevice._userId={"type":docs._id};
+          Device.findOne({ 'deviceId': req.body.deviceId }, function (err, device) {
+                  if (err) { return handleError(res, err); }
+
+                  if(!device) { 
+                      Device.create(adddevice, function(err, device) {
+                          if(err) { return handleError(res, err); }
+                          return res.json(201, device);
+                      });
+
+                     }
+                     else
+                     {
+
+                      var updated = _.merge(device, adddevice);
+
+                          updated.save(function (err) {
+                            if (err) { return handleError(res, err); }
+                            return res.json(200, device);
+                          });
+                     }
+
+
+          });
+
+
+
+      
+       
+  
+    });
+
+
+
+
+
+  /*
   Device.create(req.body, function(err, device) {
     if(err) { return handleError(res, err); }
     return res.json(201, device);
   });
+  */
+  
 };
 
 // Updates an existing device in the DB.

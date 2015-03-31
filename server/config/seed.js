@@ -31,9 +31,9 @@ Event.find({}).remove(function() {
 });
 
 
+Device.find({}).remove(function() {});
 
-
-
+/**/
 Device.find({}).remove(function() {
   Device.create({
     deviceId: "1234",

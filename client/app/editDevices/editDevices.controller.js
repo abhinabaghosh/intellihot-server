@@ -10,7 +10,34 @@ angular.module('genericAppApparborApp')
   	 $scope.addDevice = function() {
 
   	 	$scope.editMode = true;
+      var getCurrentUser = Auth.getCurrentUser;
+      console.log(getCurrentUser().email);
 
+      var addDevice={
+        deviceId: "abcd",
+        name: "new add device",
+        userEmail: getCurrentUser().email,
+        location: "updated demo location",
+        serviceContractor:{
+                    email:"testserviceContractor@gmail.com",
+                    alert:true,
+                    error:true
+                    },
+        maintenance:{
+              email:"testmaintenance@gmail.com",
+              alert:true,
+              error:true
+              },            
+        info: "no info for now",
+        active: true
+      }
+
+
+      
+      $http.post('/api/devices/', addDevice).success(function(device) {
+             $location.path('/viewDevices');
+          });
+    /**/
   	 	//alert("clicked");
   	 };
 
@@ -49,10 +76,15 @@ angular.module('genericAppApparborApp')
   	 	//alert("clicked");
   	 };
 
+     $scope.getCurrentUser = Auth.getCurrentUser;
 
-     $http.get('/api/devices').success(function(myDevices) {
+
+     $http.get('/api/devices/user/'+$scope.getCurrentUser()._id).success(function(myDevices) {
       $scope.myDevices = myDevices;
       socket.syncUpdates('myDevices', $scope.myDevices);
     });
+
+
+
 
   });
