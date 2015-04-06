@@ -8,34 +8,74 @@
 
       <div class="col-lg-7">
       	<div class="table-bordered  bottom-gap">
+      			<div ng-show="!liveViewMode">
+					<table  class="table">
+					<caption><h2 class="">My device</h2></caption>
+						
+					  <thead>
+					    <tr>
+					      <th>Heater ID</th>
+					      <th>Heater Location</th>
+					      <th>&nbsp;</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					  <!--
+					    <tr >
+					      <td>1234</td>
+					      <td>123 Park Ave NY 51201</td>
+					    </tr>
+					    <tr>
+					      <td>12345</td>
+					      <td>D 14/1 brahmapur place</td>
+					    </tr>
+					  </tbody>
+					  -->
+					  <tr ng-repeat="device in myDevices">
+					      <td>{{device.deviceId}}</td>
+					      <td>{{device.location}}</td>
+					      <td><button class="btn btn-primary btn btn-success" type="button" ng-click="ViewDevice(device.deviceId)">View</button></td>
+					   </tr>
+					   </tbody>
+					</table>      	
+				</div>	
+				<div ng-show="liveViewMode " >
+					<p class="text-center">{{pleaseWait}}</p>
 
-				<table  class="table">
-				<caption><h2 class="">My device</h2></caption>
+					<div class="col-lg-12">
+							
+						<dl class="dl-horizontal">
+						<dt>Core ID</dt>
+						<dd>{{myDevicesLiveDetails.id}}</dd>
+
+						<dt>Device Name</dt>
+						<dd>{{myDevicesLiveDetails.name}}</dd>
+
+						<dt>Connect Status</dt>
+						<dd>{{myDevicesLiveDetails.connected}}</dd>
+
+						<dt>variables</dt>
+						<dd>{{myDevicesLiveDetails.variables}}</dd>
+
+						<dt>Functions</dt>
+						<dd ng-if="myDevicesLiveDetails.functions != null" ng-repeat="function in myDevicesLiveDetails.functions">{{function}}</dd>
+
+					 	 <dd ng-if="myDevicesLiveDetails.functions == null" >{{myDevicesLiveDetails.nofunctionMsg}}</dd>
+					</dl>
+
+
+
+					</div>
+
+					<div class=" text-center bottom-gap"> 
+						<button class="btn btn-primary btn btn-success" type="button" ng-click="back()">back</button>
+					</div>
+
 					
-				  <thead>
-				    <tr>
-				      <th>Heater ID</th>
-				      <th>Heater Location</th>
-				    </tr>
-				  </thead>
-				  <tbody>
-				  <!--
-				    <tr >
-				      <td>1234</td>
-				      <td>123 Park Ave NY 51201</td>
-				    </tr>
-				    <tr>
-				      <td>12345</td>
-				      <td>D 14/1 brahmapur place</td>
-				    </tr>
-				  </tbody>
-				  -->
-				  <tr ng-repeat="device in myDevices">
-				      <td>{{device.deviceId}}</td>
-				      <td>{{device.location}}</td>
-				   </tr>
+				</div>
 
-				</table>      		
+
+
       	</div>
 
       </div>

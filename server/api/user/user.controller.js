@@ -18,6 +18,7 @@ var validationError = function(res, err) {
  * restriction: 'admin'
  */
 exports.index = function(req, res) {
+
   User.find({}, '-salt -hashedPassword', function (err, users) {
     if(err) return res.send(500, err);
     res.json(200, users);
@@ -41,13 +42,10 @@ exports.create = function (req, res, next) {
          var token = jwt.sign({_id: user._id }, config.secrets.session, { expiresInMinutes: 60*5 });
           res.json({ token: token });
       }
-    
-      else{
-            
+      else{ 
             User.findByIdAndRemove(user._id , function(err, user) {
               //if(err) res.json({ token: err });
             });
-           
             var token = jwt.sign({_id: user._id }, config.secrets.session, { expiresInMinutes: 60*5 });
             res.json({ token: token });
       }

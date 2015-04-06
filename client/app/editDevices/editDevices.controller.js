@@ -30,7 +30,7 @@ angular.module('genericAppApparborApp')
               },            
         info: "no info for now",
         active: true
-      }
+      };
 
 
       

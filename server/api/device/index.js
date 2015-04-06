@@ -8,7 +8,7 @@ var router = express.Router();
 //router.get('/',auth.isAuthenticated() ,controller.index);
 router.get('/' ,controller.index);
 router.get('/user/:id' ,controller.showUserDevices);
-router.get('/test' ,controller.test);
+router.post('/getCoreStatus' ,controller.getCoreStatus);
 router.get('/test1' ,controller.test1);
 router.get('/:id', controller.show);
 router.post('/', controller.create);
