@@ -62,6 +62,9 @@ td {
     border-top: none !important;
 }
 
+.td-right-border{
+    border-right:solid 1px #ddd  !important;
+}
 
 .text-align-left-td{
     text-align: left !important;
