@@ -9,36 +9,88 @@
       <div class="col-lg-7">
       	<div class="table-bordered  bottom-gap">
       			<div ng-show="!liveViewMode">
-					<table  class="table">
+
+
+
+
+				<table  class="table borderless">
 					<caption><h2 class="">My device</h2></caption>
-						
-					  <thead>
+
+					<thead>
 					    <tr>
 					      <th>Heater ID</th>
 					      <th>Heater Location</th>
 					      <th>&nbsp;</th>
 					    </tr>
-					  </thead>
-					  <tbody>
-					  <!--
-					    <tr >
-					      <td>1234</td>
-					      <td>123 Park Ave NY 51201</td>
-					    </tr>
-					    <tr>
-					      <td>12345</td>
-					      <td>D 14/1 brahmapur place</td>
-					    </tr>
-					  </tbody>
-					  -->
-					  <tr ng-repeat="device in myDevices">
-					      <td>{{device.deviceId}}</td>
-					      <td>{{device.location}}</td>
-					      <td><button class="btn btn-primary btn btn-success" type="button" ng-click="ViewDevice(device.deviceId)">View</button></td>
-					   </tr>
+					</thead>
+
+					  <tbody ng-repeat="device in myDevices" class="">
+					  
+						  <tr >
+										<td>{{device.deviceId}}</td>
+										<td>{{device.location}}</td>
+										<td><button class="btn btn-primary btn btn-success" type="button" ng-click="ViewDevice(device.deviceId)">View</button></td>
+						 </tr>
+						 <tr >	
+						 		
+								<td colspan="3" class="borderless-td ">
+
+									<div class="col-lg-offset-2  col-lg-8">
+
+										<table  class="table " style="border:1px solid #ddd">
+									  		<thead>
+											    <tr>
+											      <th colspan="2">Last Updated: 10:42:21</th>
+											    </tr>
+											    <tr>
+											      <th class="text-align-left-td">Parameter</th>
+											      <th class="text-align-left-td">Value</th>
+											    </tr>
+											</thead>
+
+											 <tbody>
+										  		 <tr>
+													<td class="text-align-left-td">Packet Length</td>
+													<td class="text-align-left-td">22</td>
+										  		 </tr>
+
+										  		 <tr>
+													<td class="text-align-left-td">Serial Number</td>
+													<td class="text-align-left-td">129</td>
+										  		 </tr>
+
+										  		 <tr>
+													<td class="text-align-left-td">Inlet Temp</td>
+													<td class="text-align-left-td">73</td>
+										  		 </tr>
+
+										  		 <tr>
+													<td class="text-align-left-td">Outlet Temp</td>
+													<td class="text-align-left-td">130</td>
+										  		 </tr>
+
+										  		 <tr>
+													<td class="text-align-left-td">DH Temp</td>
+													<td class="text-align-left-td">55</td>
+										  		 </tr>
+									  		 </tbody>
+						  				</table> 
+											
+									</div>
+
+								</td>
+
+						  </tr>
+
 					   </tbody>
-					</table>      	
+
+					</table> 
+
 				</div>	
+
+
+
+
 				<div ng-show="liveViewMode " >
 					<p class="text-center">{{pleaseWait}}</p>
 

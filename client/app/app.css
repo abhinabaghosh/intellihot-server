@@ -57,3 +57,13 @@ th {
 td {
   text-align: center !important;
 }
+
+.borderless-td{
+    border-top: none !important;
+}
+
+
+.text-align-left-td{
+    text-align: left !important;
+
+}
