@@ -9,6 +9,8 @@ var errors = require('./components/errors');
 module.exports = function(app) {
 
   // Insert routes below
+  app.use('/api/particleCores', require('./api/particleCore'));
+  app.use('/api/httpClientTests', require('./api/httpClientTest'));
   app.use('/api/events', require('./api/event'));
   app.use('/api/deviceErrors', require('./api/deviceError'));
   app.use('/api/deviceAlerts', require('./api/deviceAlert'));

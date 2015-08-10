@@ -40,7 +40,7 @@
 										<table  class="table " style="border:1px solid #ddd">
 									  		<thead>
 											    <tr>
-											      <th colspan="2">Last Updated: 10:42:21</th>
+											      <th colspan="2">Last Updated: {{device.heaterData.updateTime}}</th>
 											    </tr>
 											    <tr>
 											      <th class="td-right-border col-md-6">Parameter</th>
@@ -51,27 +51,27 @@
 											<tbody>
 										  		 <tr>
 													<td class="td-right-border col-md-6">Packet Length</td>
-													<td class="col-md-6">22</td>
+													<td class="col-md-6">{{device.heaterData.packetLength}}</td>
 										  		 </tr>
 
 										  		 <tr>
 													<td class="td-right-border col-md-6">Serial Number</td>
-													<td class="col-md-6">129</td>
+													<td class="col-md-6">{{device.heaterData.serialNumber}}</td>
 										  		 </tr>
 
 										  		 <tr>
 													<td class="td-right-border col-md-6">Inlet Temp</td>
-													<td class="col-md-6">73</td>
+													<td class="col-md-6">{{device.heaterData.inletTemp}}</td>
 										  		 </tr>
 
 										  		 <tr>
 													<td class="td-right-border col-md-6">Outlet Temp</td>
-													<td class="col-md-6">130</td>
+													<td class="col-md-6">{{device.heaterData.outletTemp}}</td>
 										  		 </tr>
 
 										  		 <tr>
 													<td class="td-right-border col-md-6">DH Temp</td>
-													<td class="col-md-6">55</td>
+													<td class="col-md-6">{{device.heaterData.dhTemp}}</td>
 										  		 </tr>
 									  		</tbody>
 						  				</table> 

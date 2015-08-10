@@ -12,6 +12,11 @@ var request = require('request-json');
 exports.showUserDevices = function(req, res) {
   Device.find({ 'userId':req.params.id}, function (err, devices) {
     if(err) { return handleError(res, err); }
+
+    //devices[0].heaterData.updateTime="abhinaba";
+    //devices[0].heaterData.updateTime=new Date();
+    //devices[0].heaterData.updateTimeString=new Date().toString();
+
     return res.json(200, devices);
   });
 };

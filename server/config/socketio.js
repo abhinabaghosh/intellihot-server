@@ -18,6 +18,8 @@ function onConnect(socket) {
   });
 
   // Insert sockets below
+  require('../api/particleCore/particleCore.socket').register(socket);
+  require('../api/httpClientTest/httpClientTest.socket').register(socket);
   require('../api/event/event.socket').register(socket);
   require('../api/deviceError/deviceError.socket').register(socket);
   require('../api/deviceAlert/deviceAlert.socket').register(socket);

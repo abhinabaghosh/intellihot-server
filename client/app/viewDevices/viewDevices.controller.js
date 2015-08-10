@@ -9,7 +9,12 @@ angular.module('genericAppApparborApp')
 
 
     $http.get('/api/devices/user/'+$scope.getCurrentUser()._id).success(function(myDevices) {
+
+      //myDevices[0].heaterData.updateTime=myDevices[0].heaterData.updateTime.getDate();
+
+
       $scope.myDevices = myDevices;
+      //$scope.myDevices.heaterData.updateTime = $scope.myDevices.heaterData.updateTime.toString();
       socket.syncUpdates('myDevices', $scope.myDevices);
     });
 

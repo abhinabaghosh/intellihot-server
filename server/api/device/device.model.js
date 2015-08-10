@@ -38,7 +38,15 @@ var DeviceSchema = new Schema({
         email:String,
         alert:Boolean,
         error:Boolean
-        },            
+        },
+  heaterData:{
+        packetLength:String,
+        serialNumber:String,
+        inletTemp:String,
+        outletTemp :String,
+        dhTemp:String,
+        updateTime:String
+        },                 
   info: String,
   active: Boolean
 });
