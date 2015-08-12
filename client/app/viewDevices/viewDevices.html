@@ -31,11 +31,43 @@
 										<td>{{device.location}}</td>
 										<td><button class="btn btn-primary btn btn-success" type="button" ng-click="ViewDevice(device.deviceId)">View</button></td>
 						 </tr>
+
+
+						 <tr >	
+						 		
+								<td colspan="3" class="borderless-td ">
+									<div class="col-lg-offset-1  col-lg-10">
+										<table  class="table " style="border:1px solid #ddd">
+											<tbody>
+													 <tr>
+													 		<td colspan="2"><input  type="radio" name="args" ng-model="onOff.status"  value="On">On</td>
+															<td colspan="2"><input  type="radio" name="args" ng-model="onOff.status" value="Off" checked="checked"  >Off</td>
+															<td colspan="1">
+																<button   class="btn btn-primary btn btn-success" type="button" ng-click="">
+																Turn {{onOff.status}} Heater
+																</button>
+															</td>
+													 </tr>
+													  <tr>
+															<td colspan="4" >			 
+																<input class="bar" type="range" min="100" 	max="190" 	ng-model="temperature" size="20" />
+															</td>
+															<td> 
+															<button    class="btn btn-primary btn btn-success" type="button" ng-click="test(temperature)">Set Temperature To {{temperature}} ºF</button> 
+															</td>
+													 </tr>
+									  		</tbody>
+						  				</table> 	
+									</div>
+								</td>
+						  </tr>
+
+
 						 <tr >	
 						 		
 								<td colspan="3" class="borderless-td ">
 
-									<div class="col-lg-offset-2  col-lg-8">
+									<div class="col-lg-offset-1  col-lg-10">
 
 										<table  class="table " style="border:1px solid #ddd">
 									  		<thead>
@@ -83,6 +115,8 @@
 						  </tr>
 
 					   </tbody>
+
+
 
 					</table> 
 

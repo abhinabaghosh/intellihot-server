@@ -36,7 +36,7 @@ angular.module('genericAppApparborApp')
       
       $http.post('/api/devices/', addDevice).success(function(device) {
              $location.path('/viewDevices');
-          });
+      });
     /**/
   	 	//alert("clicked");
   	 };

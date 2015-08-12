@@ -3,15 +3,32 @@
 angular.module('genericAppApparborApp')
   .controller('ViewDevicesCtrl', function ($scope,$http, Auth,socket,$location) {
     $scope.message = 'Hello';
+
+    $scope.temperature = 150;
+
+
+
+    //$scope.onOff = "Off";
+    $scope.onOff = {
+        status: 'Off'
+      };
+
+
     $scope.getCurrentUser = Auth.getCurrentUser;
 
     $scope.liveViewMode = false;
 
 
+    $scope.test = function(temp) {
+        //alert($scope.setTemparature);
+       //alert(temp);
+      }
+
+
     $http.get('/api/devices/user/'+$scope.getCurrentUser()._id).success(function(myDevices) {
 
       //myDevices[0].heaterData.updateTime=myDevices[0].heaterData.updateTime.getDate();
-
+      //$scope.temperature =myDevices.heaterData.inletTemp;
 
       $scope.myDevices = myDevices;
       //$scope.myDevices.heaterData.updateTime = $scope.myDevices.heaterData.updateTime.toString();
@@ -20,32 +37,24 @@ angular.module('genericAppApparborApp')
 
     $scope.ViewDevice = function(deviceId) {
 
-      //var liveFeedUrl='http://localhost:8080/v1/devices/'+deviceId+'?access_token='+$scope.getCurrentUser().backEndAccessToken;
-    	var backendAccessUrl='/v1/devices/'+deviceId+'?access_token='+$scope.getCurrentUser().backEndAccessToken;
-    
-       $scope.pleaseWait = "Please be patient, getting your core status from server";
+        //var liveFeedUrl='http://localhost:8080/v1/devices/'+deviceId+'?access_token='+$scope.getCurrentUser().backEndAccessToken;
+      	var backendAccessUrl='/v1/devices/'+deviceId+'?access_token='+$scope.getCurrentUser().backEndAccessToken;
+        $scope.pleaseWait = "Please be patient, getting your core status from server";
+        var postData={
+          backendAccessUrl: backendAccessUrl
+        } ;
 
-      var postData={
-        backendAccessUrl: backendAccessUrl
-      } ;
+        var liveFeedUrl='/api/devices/getCoreStatus'; 
 
-       var liveFeedUrl='/api/devices/getCoreStatus'; 
-
-       $http.post(liveFeedUrl,postData).success(function(myDevicesLiveDetails) {
-
-           $scope.pleaseWait="";
+        $http.post(liveFeedUrl,postData).success(function(myDevicesLiveDetails) {
+          $scope.pleaseWait="";
           myDevicesLiveDetails.variables="No variable found ";
           myDevicesLiveDetails.nofunctionMsg="Core not connected";
 
-          
-
           $scope.myDevicesLiveDetails = myDevicesLiveDetails;
-
           //console.log(myDevicesLiveDetails);
-
           socket.syncUpdates('myDevicesLiveDetails', $scope.myDevicesLiveDetails);
-      }) 
-
+        });
 
 
       /*
