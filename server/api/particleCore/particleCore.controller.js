@@ -3,6 +3,8 @@
 var _ = require('lodash');
 var ParticleCore = require('./particleCore.model');
 var Device = require('../device/device.model');
+var request = require('request-json');
+
 
 // Get list of particleCores
 exports.index = function(req, res) {
@@ -28,6 +30,54 @@ exports.create = function(req, res) {
     return res.status(201).json(particleCore);
   });
 };
+
+
+exports.heaterOnOff = function(req, res) {
+
+  //console.log("argument value 1"+req.body.deviceId);
+  //console.log("argument value 2"+req.body.heaterOnOff);
+
+  var baseUrl=process.env.BACKEND_BASEURL || 'http://192.168.1.15:8080';
+  var client = request.createClient(baseUrl);
+  var functionName='heaterOnOff';
+  //var functionName='led';
+  var url='/v1/devices/'+req.body.deviceId+'/'+functionName+'?access_token='+req.body.backEndAccessToken;
+  var data = {
+              args: req.body.heaterOnOff
+  };
+  //spark.callFunction(devices[0].id, 'digitalwrite', 'D0:HIGH', callback);
+
+  client.post(url,data, function(err, response, body) {
+    //console.log(body);
+    return res.json(body);
+  });
+    /* */
+};
+
+
+exports.setHeaterTemperature = function(req, res) {
+
+  //console.log("argument value 1"+req.body.deviceId);
+  //console.log("argument value 2"+req.body.heaterTemperature);
+
+  var baseUrl=process.env.BACKEND_BASEURL || 'http://192.168.1.15:8080';
+  var client = request.createClient(baseUrl);
+  var functionName='setTemperature';
+  var url='/v1/devices/'+req.body.deviceId+'/'+functionName+'?access_token='+req.body.backEndAccessToken;
+  var data = {
+              args: req.body.heaterTemperature
+  };
+
+  //spark.callFunction(devices[0].id, 'digitalwrite', 'D0:HIGH', callback);
+  client.post(url,data, function(err, response, body) {
+    //console.log(body);
+    return res.json(body);
+  });
+  /* */
+ 
+};
+
+
 
 
 exports.postCoreValue = function(req, res) {

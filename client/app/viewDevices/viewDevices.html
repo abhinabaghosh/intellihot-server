@@ -40,10 +40,10 @@
 										<table  class="table " style="border:1px solid #ddd">
 											<tbody>
 													 <tr>
-													 		<td colspan="2"><input  type="radio" name="args" ng-model="onOff.status"  value="On">On</td>
-															<td colspan="2"><input  type="radio" name="args" ng-model="onOff.status" value="Off" checked="checked"  >Off</td>
+													 		<td colspan="2"><input  type="radio" name="args" ng-model="onOff.status"  value="on">On</td>
+															<td colspan="2"><input  type="radio" name="args" ng-model="onOff.status" value="off" checked="checked"  >Off</td>
 															<td colspan="1">
-																<button   class="btn btn-primary btn btn-success" type="button" ng-click="">
+																<button   class="btn btn-primary btn btn-success" type="button" ng-click="heaterOnOff(device.deviceId)">
 																Turn {{onOff.status}} Heater
 																</button>
 															</td>
@@ -53,7 +53,7 @@
 																<input class="bar" type="range" min="100" 	max="190" 	ng-model="temperature" size="20" />
 															</td>
 															<td> 
-															<button    class="btn btn-primary btn btn-success" type="button" ng-click="test(temperature)">Set Temperature To {{temperature}} ºF</button> 
+															<button    class="btn btn-primary btn btn-success" type="button" ng-click="setHeaterTemp(device.deviceId,temperature)">Set Temperature To {{temperature}} ºF</button> 
 															</td>
 													 </tr>
 									  		</tbody>

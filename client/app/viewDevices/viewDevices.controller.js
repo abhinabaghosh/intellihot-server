@@ -4,13 +4,13 @@ angular.module('genericAppApparborApp')
   .controller('ViewDevicesCtrl', function ($scope,$http, Auth,socket,$location) {
     $scope.message = 'Hello';
 
-    $scope.temperature = 150;
+    $scope.temperature =150;
 
 
 
     //$scope.onOff = "Off";
     $scope.onOff = {
-        status: 'Off'
+        status: 'off'
       };
 
 
@@ -19,10 +19,62 @@ angular.module('genericAppApparborApp')
     $scope.liveViewMode = false;
 
 
-    $scope.test = function(temp) {
-        //alert($scope.setTemparature);
-       //alert(temp);
-      }
+    $scope.heaterOnOff = function(deviceId) {
+      //alert( $scope.onOff.status);  
+      //alert( deviceId);  
+      var postUrl='/api/particleCores/heaterOnOff'; 
+
+       var postData={
+          deviceId:deviceId,
+          heaterOnOff: $scope.onOff.status,
+          backEndAccessToken:$scope.getCurrentUser().backEndAccessToken
+        } ;
+
+       
+       $http.post(postUrl,postData).success(function(returnData) {
+          // console.log(returnData);
+
+          if(returnData.error)
+            alert("Something West Wrong. "+returnData.error);
+          else
+            alert("Heater Turned "+$scope.onOff.status);
+          
+        });
+      /* */
+    };
+
+
+
+    $scope.setHeaterTemp = function(deviceId,temp) {
+       // alert(temp);  
+
+        //$scope.temperature =111;
+        
+        var postUrl='/api/particleCores/setHeaterTemperature'; 
+
+        
+        var postData={
+          deviceId:deviceId,
+          heaterTemperature: temp,
+          backEndAccessToken:$scope.getCurrentUser().backEndAccessToken
+        } ;
+
+         $http.post(postUrl,postData).success(function(returnData) {
+
+            if(returnData.error)
+              alert("Something West Wrong. "+returnData.error);
+            else
+              alert("Heater Temperature Changed to "+temp +" ºF");
+
+          });
+        /**/
+
+      };
+
+
+
+
+
 
 
     $http.get('/api/devices/user/'+$scope.getCurrentUser()._id).success(function(myDevices) {
