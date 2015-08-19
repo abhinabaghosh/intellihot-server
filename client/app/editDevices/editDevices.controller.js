@@ -1,12 +1,15 @@
 'use strict';
 
 angular.module('genericAppApparborApp')
-  .controller('EditDevicesCtrl', function ($scope,$http, Auth, socket,$location) {
+  .controller('EditDevicesCtrl', function ($scope,$http,Auth,$location) {
   	$scope.message = 'Hello';
     $scope.editMode = false;
 
     $scope.heaterLocation = "abcd";
 
+
+
+    /*
   	 $scope.addDevice = function() {
 
   	 	$scope.editMode = true;
@@ -32,14 +35,13 @@ angular.module('genericAppApparborApp')
         active: true
       };
 
-
-      
       $http.post('/api/devices/', addDevice).success(function(device) {
              $location.path('/viewDevices');
       });
-    /**/
-  	 	//alert("clicked");
   	 };
+    */
+
+
 
 
      $scope.editDevice = function(deviceId) {
@@ -47,18 +49,16 @@ angular.module('genericAppApparborApp')
       $scope.editMode = true;
             $http.get('/api/devices/'+deviceId).success(function(device) {
             $scope.deviceDetails = device;
-            socket.syncUpdates('deviceDetails', $scope.deviceDetails);
           });
 
      };
 
-     
+
      //$scope.updateDevice = function(deviceId) {
       $scope.updateDevice = function() {
     
             $http.put('/api/devices/'+$scope.deviceDetails._id,$scope.deviceDetails).success(function(device) {
             //$scope.deviceDetails = device;
-            //socket.syncUpdates('deviceDetails', $scope.deviceDetails);
              //$scope.editMode = false;
              //$route.reload();
              $location.path('/viewDevices');
@@ -76,15 +76,68 @@ angular.module('genericAppApparborApp')
   	 	//alert("clicked");
   	 };
 
+  /*
      $scope.getCurrentUser = Auth.getCurrentUser;
 
+    if( $scope.getCurrentUser()._id)
+    localStorage.setItem("currentUserId", $scope.getCurrentUser()._id);
 
-     $http.get('/api/devices/user/'+$scope.getCurrentUser()._id).success(function(myDevices) {
+    //var currentUserId=localStorage.getItem("currentUserId");
+
+   
+    var currentUserId= $scope.getCurrentUser()._id;
+
+    $http.get('/api/devices/user/'+currentUserId).success(function(myDevices) {
       $scope.myDevices = myDevices;
-      socket.syncUpdates('myDevices', $scope.myDevices);
     });
+  */
+
+
+
+    
+    /**/
+    if(Auth.getCurrentUser()._id==undefined)
+    {   
+
+        $http.get('/api/users/me').then(function(result) {
+            $scope.getCurrentUser = result.data;
+            var currentUserId= $scope.getCurrentUser._id;
+            
+            $http.get('/api/devices/user/'+currentUserId).success(function(myDevices) {
+              $scope.myDevices = myDevices;
+            });
+
+        });
+
+    }
+    else
+    {     
+      /*
+          $scope.getCurrentUser = Auth.getCurrentUser;
+          var currentUserId= $scope.getCurrentUser()._id;
+          //console.log("auth present");
+          //console.log("userid-->"+currentUserId);
+          $http.get('/api/devices/user/'+currentUserId).success(function(myDevices) {
+           $scope.myDevices = myDevices;
+          });
+            */
+
+
+          $scope.getCurrentUser = Auth.getCurrentUser();
+          var currentUserId= $scope.getCurrentUser._id;
+          //console.log("auth present");
+          //console.log("userid-->"+currentUserId);
+          $http.get('/api/devices/user/'+currentUserId).success(function(myDevices) {
+           $scope.myDevices = myDevices;
+          });
+
+    }
+    
+
+     
 
 
 
 
   });
+    

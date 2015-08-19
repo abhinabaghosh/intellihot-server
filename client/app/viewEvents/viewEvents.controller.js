@@ -1,13 +1,12 @@
 'use strict';
 
 angular.module('genericAppApparborApp')
-  .controller('ViewEventsCtrl', function ($scope,$http, Auth, socket) {
+  .controller('ViewEventsCtrl', function ($scope,$http, Auth) {
     $scope.message = 'Hello';
 
 
      $http.get('/api/events').success(function(events) {
       $scope.events = events;
-      socket.syncUpdates('events', $scope.events);
     });
 
 

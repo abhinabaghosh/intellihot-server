@@ -96,15 +96,8 @@ exports.create = function(req, res) {
                             return res.json(200, device);
                           });
                      }
-
-
+                     
           });
-
-
-
-      
-       
-  
     });
 
 

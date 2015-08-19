@@ -9,7 +9,9 @@
       <div class="col-lg-7">
 
       	<div class="table-bordered  bottom-gap col-lg-12 padding-top-1">
+
       		<div  ng-show="!editMode" class="table-responsive">
+      		<!-- <div class="table-responsive">-->
       			<!--<button class="btn btn-primary btn btn-success" type="button" ng-click="addDevice()">Add New Device</button>-->
       			<table  class="table">
 				<caption><h2 class="">My device</h2></caption>
@@ -32,6 +34,7 @@
 				</table>
       		</div>
 
+      		
       		<div  ng-show="editMode">
       			
 						<form class="form-horizontal" role="form" ng-submit="updateDevice()">
@@ -97,7 +100,7 @@
 						  </div>
 						</form>
 
-      		</div>
+      		</div> <!---->
 
 
 

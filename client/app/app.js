@@ -1,5 +1,5 @@
 'use strict';
-
+/*
 angular.module('genericAppApparborApp', [
   'ngCookies',
   'ngResource',
@@ -9,6 +9,18 @@ angular.module('genericAppApparborApp', [
   'ngMaterial',
   'ui.bootstrap'
 ])
+*/
+
+angular.module('genericAppApparborApp', [
+  'ngCookies',
+  'ngResource',
+  'ngSanitize',
+  'ngRoute',
+  'ngMaterial',
+  'ui.bootstrap'
+])
+
+
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
       .otherwise({

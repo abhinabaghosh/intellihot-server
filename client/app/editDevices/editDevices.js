@@ -8,3 +8,4 @@ angular.module('genericAppApparborApp')
         controller: 'EditDevicesCtrl'
       });
   });
+
